@@ -10,10 +10,13 @@ import { AccescontrollogService } from '../service/accescontrollog.service';
 })
 
 export class LogFormComponent implements OnInit {
+  formModel = {
+    person: 'Name',
+    message: 'Hello'
+  }
+
   Logs:Log[]=[];
   newLog:Log;
-  person: string = "Name";
-  message: string = "Hello";
   success: boolean = false;
 
   constructor(private newAccescontrollogService:AccescontrollogService) {
@@ -23,7 +26,7 @@ export class LogFormComponent implements OnInit {
   }
 
   handleSubmitForm() {
-    this.newAccescontrollogService.addAccessItem(this.person, this.message);
+    this.newAccescontrollogService.addAccessItem(this.formModel.person, this.formModel.message);
     this.success = true;
   }
 

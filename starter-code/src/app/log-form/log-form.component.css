@@ -1,0 +1,20 @@
+.has-error {
+  border: 1px solid red;
+}
+
+form {
+  padding: 20px;
+}
+
+.feedback {
+  color: red;
+  padding: 5px;
+}
+
+.feedback ul {
+  display: none;
+}
+
+.has-error .feedback {
+  display: block;
+}

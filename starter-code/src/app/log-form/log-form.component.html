@@ -1,8 +1,23 @@
 <h1>FORM</h1>
 
-<form #logAccessForm="ngForm" (ngSubmit)="handleSubmitForm(logAccessForm)">
-  <input type="text" name="Person:" placeholder="person" [(ngModel)]="person">
-  <input type="text" name="Message:" placeholder="message" [(ngModel)]="message">
-  <button>Add Log</button>
-  <p *ngIf="success">Success</p>
+<form #logAccessForm="ngForm" (ngSubmit)="handleSubmitForm(logAccessForm)" [ngClass]="{'has-error': logAccessForm.invalid}">
+  <div class="form-field">
+    <label>Person</label>
+    <input #person="ngModel" type="text" name="person" placeholder="person" [(ngModel)]="formModel.person" required>
+    <ul class="feedback">
+      <li class="error" [hidden]="person.valid" >Please enter your name</li>
+    </ul>
+  </div>
+
+  <div class="form-field">
+    <label>Message</label>
+    <input #message="ngModel" type="text" name="message" placeholder="message" [(ngModel)]="formModel.message" required>
+    <ul class="feedback">
+      <li class="error" [hidden]="message.valid">Please enter a message</li>
+    </ul>
+  </div>
+
+  <button [disabled]="logAccessForm.invalid">Add Log</button>
 </form>
+
+<p *ngIf="success">Success</p>
