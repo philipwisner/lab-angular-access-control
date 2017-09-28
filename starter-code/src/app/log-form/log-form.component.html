@@ -1,6 +1,8 @@
 <h1>FORM</h1>
 
-<input type="text"name="Person:" placeholder="person" [(ngModel)]="this.newLog.person">
-<input type="text"name="Message:" placeholder="message" [(ngModel)]="this.newLog.message">
-
-<button (click)="addAccessItem()">Add Log</button>
+<form #logAccessForm="ngForm" (ngSubmit)="handleSubmitForm(logAccessForm)">
+  <input type="text" name="Person:" placeholder="person" [(ngModel)]="person">
+  <input type="text" name="Message:" placeholder="message" [(ngModel)]="message">
+  <button>Add Log</button>
+  <p *ngIf="success">Success</p>
+</form>

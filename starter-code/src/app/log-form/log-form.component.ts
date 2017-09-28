@@ -12,13 +12,19 @@ import { AccescontrollogService } from '../service/accescontrollog.service';
 export class LogFormComponent implements OnInit {
   Logs:Log[]=[];
   newLog:Log;
+  person: string = "Name";
+  message: string = "Hello";
+  success: boolean = false;
 
-  constructor(private newAccescontrollogService:AccescontrollogService) { 
-    
-    
-  
+  constructor(private newAccescontrollogService:AccescontrollogService) {
   }
 
   ngOnInit() {
   }
+
+  handleSubmitForm() {
+    this.newAccescontrollogService.addAccessItem(this.person, this.message);
+    this.success = true;
+  }
+
 }
